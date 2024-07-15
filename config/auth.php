@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'customers',
+        ],
     ],
 
     /*
@@ -62,7 +66,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [
@@ -112,4 +116,14 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    'api' => [
+        'driver' => 'token',
+        'provider' => 'customers',
+        'hash' => false,
+    ],
+    'customer' => [
+        'driver' => 'session',
+        'provider' => 'customers',
+        'model' => App\Models\Customer::class,
+    ],
 ];

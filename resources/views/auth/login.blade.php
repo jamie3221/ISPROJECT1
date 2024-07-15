@@ -15,7 +15,7 @@
                 </div>
                 <div id="customer-login" class="login-form active">
                     <h2>Customer Login</h2>
-                    <form action="" method="POST">
+                    <form action="{{route('customer.login.submit')}}" method="POST">
                         @csrf
                         <input type="email" name="email" placeholder="Email" required>
                         <input type="password" name="password" placeholder="Password" required>
