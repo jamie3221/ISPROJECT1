@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+body {
+    background-color: #8e9eab;
+    background-image: radial-gradient(circle, #ff8a00, #e52d27, #5f72be, #00b5c0, #00b5c0);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+.welcome-container h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.bottom-left-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-align: left;
+}
+.buttons {
+    margin-top: 20px;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #00b5c0;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #5f72be;
+}
+.btn:active {
+    background-color: #7389e3;
+}
+.admin-login-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
