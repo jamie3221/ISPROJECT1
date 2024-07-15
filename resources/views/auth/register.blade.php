@@ -25,7 +25,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('register.submit')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="text" name="first_name" placeholder="First Name" required>
                         <input type="text" name="middle_name" placeholder="Middle Name">
@@ -46,8 +46,9 @@
                         <button class="service-provider-type-btn" data-type="company"> Company</button>
                     </div>
                     <div id="individual-register" class="register-form active">
-                        <form action="#" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('service_provider.register.submit')}}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="type" id="type">
                             <input type="text" name="first_name" placeholder="First Name" required>
                             <input type="text" name="middle_name" placeholder="Middle Name">
                             <input type="text" name="last_name" placeholder="Last Name" required>
@@ -61,8 +62,9 @@
                         </form>
                     </div>
                     <div id="business-register" class="register-form">
-                        <form action="#" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('service_provider.register.submit')}}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="type" id="type">
                             <input type="text" name="company_name" placeholder="Company Name" required>
                             <input type="email" name="email" placeholder="Email" required>
                             <input type="number" name="phone_number" placeholder="Phone Number" required>
@@ -95,6 +97,8 @@
                             serviceProviderRegister.classList.add('active');
                             customerRegister.classList.remove('active');
                         }
+                        const typeInput =document.getElementById('type');
+                        typeInput.value = this.getAttribute('data-type');
                     });
                 });
                 const serviceProviderTypeBtns = document.querySelectorAll('.service-provider-type-btn');

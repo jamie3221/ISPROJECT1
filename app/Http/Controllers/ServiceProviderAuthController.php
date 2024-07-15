@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-use App\Models\ServiceProvider; 
+use App\Models\ServiceProvider;
 
 class ServiceProviderAuthController extends Controller
 {
-    public function showLoginForm(){
-        return view('auth/login');
+    public function showLoginForm()
+    {
+        return view('auth.login');
     }
+
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
