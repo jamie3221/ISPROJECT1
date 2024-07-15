@@ -11,7 +11,7 @@
             <h1>WELCOME TO HOUSECARE CONNECT</h1>
             <div class="buttons">
                 <a class="btn" href="{{route('login')}}">Log In</a>
-                <a class="btn" href="#">Register</a>
+                <a class="btn" href="{{route('register')}}">Register</a>
             </div>
         </div>
         <a class="admin-login-link" href="#">Admin Login</a>

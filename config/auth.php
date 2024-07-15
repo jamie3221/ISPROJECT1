@@ -8,10 +8,6 @@ return [
     ],
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
         'customer' => [
             'driver' => 'session',
             'provider' => 'customers', // Ensure 'customers' provider is defined correctly
@@ -32,6 +28,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'customers' => [ // Define the customers password reset configuration correctly
+            'provider' => 'customers',
             'table' => 'password_resets',
             'expire' => 60,
         ],

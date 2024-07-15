@@ -4,25 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CustomerLoginRequest;
 
 class CustomerAuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login'); // Adjust this to match your actual view name
+        return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function login(CustomerLoginRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('customer')->attempt($credentials)) {
-            return redirect()->route('test_working');
-        } else {
-            return back()->withInput($request->only('email'))->withErrors(['email' => 'Invalid email or password']);
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended(route('test_working'));
         }
+
+        return redirect()->route('login')->withErrors(['email' => 'Invalid email or password']);
     }
 }

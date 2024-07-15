@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+body {
+    background-color: #8e9eab;
+    background-image: radial-gradient(circle, #ff8a00, #e52d27, #5f72be, #00b5c0, #00b5c0);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.register-box {
+    background: rgba(255, 255, 255, 0.9); /* More opaque white */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.register-switch {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.switch-btn {
+    background: none;
+    border: none;
+    background-color: #00b5c0;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px; /* Retain border radius */
+}
+
+.switch-btn.active {
+    background-color: #5f72be;
+}
+
+.switch-btn:hover {
+    background-color: #5f72be;
+}
+
+.register-form {
+    display: none;
+    padding: 20px 0;
+}
+
+.register-form.active {
+    display: block;
+}
+
+.register-form h2 {
+    color: #8e9eab;
+    margin-bottom: 20px;
+}
+
+.register-form input {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.register-form .btn {
+    display: inline-block;
+    width: calc(100% - 40px);
+    padding: 10px 20px;
+    background-color: #00b5c0; /* Initial blue color */
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-form .btn:hover {
+    background-color: #5f72be;
+}
+
+.register-form .btn:active {
+    background-color: #a080c0;
+}
+
+.register-options {
+    margin-top: 20px;
+}
+
+.register-options a {
+    color: black; /* Text color black */
+    text-decoration: none;
+}
+
+.register-options p {
+    color: black; /* Text color black */
+    margin: 0;
+}
+
+.service-provider-type-switch {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.service-provider-type-btn {
+    background: none;
+    border: none;
+    background-color: #00b5c0;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px; /* Retain border radius */
+}
+
+.service-provider-type-btn.active {
+    background-color: #5f72be;
+}
+
+.service-provider-type-btn:hover {
+    background-color: #5f72be;
+}
+
+.service-provider-type-btn.active, .service-provider-type-btn:hover {
+    border-radius: 5px; /* Ensure border radius on hover and active */
+}
+
+.alert.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.alert.alert-danger ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.alert.alert-danger li {
+    text-align: left;
+}
