@@ -33,7 +33,8 @@
                         <input type="number" name="phone_number" placeholder="Phone Number" required>
                         <input type="password" name="password" placeholder="Password" required>
                         <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
-                        <input type="image" name="profile_picture" placeholder="Profile Picture">
+                        <input type="file" name="profile_picture" id="profile_picture" accept="image/*" onchange="previewImage(event)">
+                        <img id="profile_preview" src="{{ asset('images\profile pictures\Default-Profile-Picture-Transparent-Image.png') }}" alt="Profile Picture" class="profile-preview">
                         <button type="submit" class="btn">Register</button>
                     </form>	
                 </div>
@@ -53,7 +54,8 @@
                             <input type="number" name="phone_number" placeholder="Phone Number" required>
                             <input type="password" name="password" placeholder="Password" required>
                             <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
-                            <input type="image" name="profile_picture" placeholder="Profile Picture">
+                            <input type="file" name="profile_picture" id="profile_picture" accept="image/*" onchange="previewImage(event)">
+                            <img id="profile_preview" src="{{ asset('images\profile pictures\Default-Profile-Picture-Transparent-Image.png') }}" alt="Profile Picture" class="profile-preview">
                             <button type="submit" class="btn">Register</button>
                         </form>
                     </div>
@@ -65,7 +67,8 @@
                             <input type="number" name="phone_number" placeholder="Phone Number" required>
                             <input type="password" name="password" placeholder="Password" required>
                             <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
-                            <input type="image" name="profile_picture" placeholder="Profile Picture">
+                            <input type="file" name="profile_picture" id="profile_picture" accept="image/*" onchange="previewImage(event)">
+                            <img id="profile_preview" src="{{ asset('images\profile pictures\Default-Profile-Picture-Transparent-Image.png') }}" alt="Profile Picture" class="profile-preview">
                             <button type="submit" class="btn">Register</button>
                         </form>
                     </div>

@@ -42,7 +42,7 @@
                 </div>
                 <div class="login-options">
                     <a href="#">Forgot Password?</a>
-                    <p>Don't have an account? <a href="#">Register for free!</a></p>    
+                    <p>Don't have an account? <a href="{{route('register')}}">Register for free!</a></p>    
                 </div>
             </div>
         </div>
