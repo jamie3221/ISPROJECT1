@@ -6,7 +6,8 @@
         <link rel="stylesheet" href="{{asset('css/login_page.css')}}">
         <title>Login - Housecare Connect</title>
     </head>
-    <body></body>
+    <body>
+        <a href="{{route('home')}}" class="home-btn">Back to Home</a>
         <div class = "container">
             <div class = "login-box">
                 <div class="login-switch">
@@ -66,6 +67,5 @@
                 });
             });
         </script>
-
     </body>
 </html>

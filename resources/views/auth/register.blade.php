@@ -7,6 +7,7 @@
         <title>Register - Housecare Connect</title>
     </head>
     <body>
+        <a href="{{route('home')}}" class="home-btn">Back to Home</a>
         <div class = "container">
             <div class = "register-box">
                 <div class="register-switch">

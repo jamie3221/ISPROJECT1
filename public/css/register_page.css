@@ -182,3 +182,15 @@ body {
     object-fit: cover;
     border: 2px solid #00b5c0;
 }
+.home-btn{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #00b5c0;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
