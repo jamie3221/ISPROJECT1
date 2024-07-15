@@ -24,7 +24,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{route('login.post')}}" method="POST">
+                    <form action="{{route('login.submit')}}" method="POST">
                         @csrf
                         <input type="email" name="email" placeholder="Email" required>
                         <input type="password" name="password" placeholder="Password" required>

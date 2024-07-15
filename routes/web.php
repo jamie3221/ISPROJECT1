@@ -7,13 +7,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
-
+//Login routes
 Route::get('/login', [CustomerAuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [CustomerAuthController::class, 'login'])->name('login.post');
+Route::post('/login', [CustomerAuthController::class, 'login'])->name('login.submit');
 
-Route::middleware('auth:customer')->get('/test', function () {
-    return view('test');
+//Register routes
+Route::get('/register', [CustomerAuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [CustomerAuthController::class, 'register'])->name('register.submit');
+
+//logout routes
+
+//test confirmation routes
+Route::get('/test', function () {
+    return view('test_working');
 })->name('test');

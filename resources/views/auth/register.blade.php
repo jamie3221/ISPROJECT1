@@ -24,7 +24,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="#" method="POST">
+                    <form action="#" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="text" name="first_name" placeholder="First Name" required>
                         <input type="text" name="middle_name" placeholder="Middle Name">
@@ -45,7 +45,7 @@
                         <button class="service-provider-type-btn" data-type="company"> Company</button>
                     </div>
                     <div id="individual-register" class="register-form active">
-                        <form action="#" method="POST">
+                        <form action="#" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="text" name="first_name" placeholder="First Name" required>
                             <input type="text" name="middle_name" placeholder="Middle Name">
@@ -60,7 +60,7 @@
                         </form>
                     </div>
                     <div id="business-register" class="register-form">
-                        <form action="#" method="POST">
+                        <form action="#" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="text" name="company_name" placeholder="Company Name" required>
                             <input type="email" name="email" placeholder="Email" required>
