@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Customer;
-
 class CustomerAuthController extends Controller
 {
     public function showLoginForm(){
@@ -21,7 +18,6 @@ class CustomerAuthController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
         $credentials = $request->only('email', 'password');
         if (Auth::guard('customer')->attempt($credentials)) {
             return redirect()->route('test');
@@ -42,7 +38,6 @@ class CustomerAuthController extends Controller
             'password' => 'required|min:6',
             'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }

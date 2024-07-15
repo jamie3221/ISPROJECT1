@@ -25,7 +25,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{route('register.submit')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('customer_register.submit')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="text" name="first_name" placeholder="First Name" required>
                         <input type="text" name="middle_name" placeholder="Middle Name">
@@ -43,12 +43,12 @@
                     <h2>Service Provider Registration</h2>
                     <div class="service-provider-type-switch">
                         <button class="service-provider-type-btn active" data-type="individual"> Individual</button>
-                        <button class="service-provider-type-btn" data-type="company"> Company</button>
+                        <button class="service-provider-type-btn" data-type="company"> Business</button>
                     </div>
                     <div id="individual-register" class="register-form active">
                         <form action="{{route('service_provider.register.submit')}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="type" id="type">
+                            <input type="hidden" name="service_provider_type" id="type" value="individual">
                             <input type="text" name="first_name" placeholder="First Name" required>
                             <input type="text" name="middle_name" placeholder="Middle Name">
                             <input type="text" name="last_name" placeholder="Last Name" required>
@@ -64,7 +64,7 @@
                     <div id="business-register" class="register-form">
                         <form action="{{route('service_provider.register.submit')}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="type" id="type">
+                            <input type="hidden" name="service_provider_type" id="type" value="business">
                             <input type="text" name="company_name" placeholder="Company Name" required>
                             <input type="email" name="email" placeholder="Email" required>
                             <input type="number" name="phone_number" placeholder="Phone Number" required>
@@ -82,42 +82,45 @@
             </div>
         </div>
         <script>
-            document.addEventListener('DOMContentLoaded', function(){
-                const switchBtns = document.querySelectorAll('.switch-btn');
-                const customerRegister = document.getElementById('customer-register');
-                const serviceProviderRegister = document.getElementById('service-provider-register');
-                switchBtns.forEach(btn =>{
-                    btn.addEventListener('click', function(){
-                        switchBtns.forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        if(this.getAttribute('data-type') === 'customer'){
-                            customerRegister.classList.add('active');
-                            serviceProviderRegister.classList.remove('active');
-                        }else{
-                            serviceProviderRegister.classList.add('active');
-                            customerRegister.classList.remove('active');
-                        }
-                        const typeInput =document.getElementById('type');
-                        typeInput.value = this.getAttribute('data-type');
-                    });
-                });
-                const serviceProviderTypeBtns = document.querySelectorAll('.service-provider-type-btn');
-                const individualRegister = document.getElementById('individual-register');
-                const businessRegister = document.getElementById('business-register');
-                serviceProviderTypeBtns.forEach(btn =>{
-                    btn.addEventListener('click', function(){
-                        serviceProviderTypeBtns.forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        if(this.getAttribute('data-type') === 'individual'){
-                            individualRegister.classList.add('active');
-                            businessRegister.classList.remove('active');
-                        }else{
-                            businessRegister.classList.add('active');
-                            individualRegister.classList.remove('active');
-                        }
-                    });
+        document.addEventListener('DOMContentLoaded', function () {
+            const switchBtns = document.querySelectorAll('.switch-btn');
+            const customerRegister = document.getElementById('customer-register');
+            const serviceProviderRegister = document.getElementById('service-provider-register');
+
+            switchBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    switchBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    if (this.getAttribute('data-type') === 'customer') {
+                        customerRegister.classList.add('active');
+                        serviceProviderRegister.classList.remove('active');
+                    } else {
+                        serviceProviderRegister.classList.add('active');
+                        customerRegister.classList.remove('active');
+                    }
                 });
             });
-        </script>
+
+            const serviceProviderTypeBtns = document.querySelectorAll('.service-provider-type-btn');
+            const individualRegister = document.getElementById('individual-register');
+            const businessRegister = document.getElementById('business-register');
+
+            serviceProviderTypeBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    serviceProviderTypeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    if (this.getAttribute('data-type') === 'individual') {
+                        individualRegister.classList.add('active');
+                        businessRegister.classList.remove('active');
+                    } else {
+                        businessRegister.classList.add('active');
+                        individualRegister.classList.remove('active');
+                    }
+                    const typeInput = document.getElementById('type');
+                    typeInput.value = this.getAttribute('data-type');
+                });
+            });
+        });
+    </script>
     </body>
 </html>

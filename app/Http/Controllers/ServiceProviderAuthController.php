@@ -1,20 +1,16 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ServiceProvider;
-
 class ServiceProviderAuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('auth/login');
     }
-
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -27,21 +23,19 @@ class ServiceProviderAuthController extends Controller
         }
 
         $credentials = $request->only('email', 'password');
-        if (Auth::guard('service_provider')->attempt($credentials)) {
+        if (Auth::guard('service_providers')->attempt($credentials)) {
             return redirect()->route('test');
         }
         return redirect()->back()->with('error', 'Invalid credentials');
     }
-
     public function showRegisterForm()
     {
-        return view('auth.register');
+        return view('auth/register');
     }
-
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'type' => 'required|in:individual,company',
+            'service_provider_type' => 'required|in:individual,company',
             'first_name' => 'required_if:type,individual|string|max:255',
             'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required_if:type,individual|string|max:255',
@@ -51,16 +45,13 @@ class ServiceProviderAuthController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
         $profilePicturePath = null;
         if ($request->hasFile('profile_picture')) {
             $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
         }
-
         $serviceProvider = new ServiceProvider();
         if ($request->type == 'individual') {
             $serviceProvider->first_name = $request->first_name;
@@ -75,7 +66,6 @@ class ServiceProviderAuthController extends Controller
         $serviceProvider->profile_picture = $profilePicturePath;
         $serviceProvider->type = $request->type;
         $serviceProvider->save();
-
         return redirect()->route('service_provider.login')->with('success', 'Registration successful. Please log in.');
     }
 }

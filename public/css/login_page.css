@@ -149,3 +149,8 @@ body {
 .home-btn:active {
     background-color: #a080c0; 
 }
+.profile-preview {
+    max-width: 100px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
