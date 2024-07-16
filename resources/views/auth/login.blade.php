@@ -42,6 +42,7 @@
                                 @endforeach
                             </ul>
                         </div>
+                    @endif	
                     <form action="{{route('service_provider.login.submit')}}" method="POST">
                         @csrf
                         <input type="email" name="email" placeholder="Email" required>
