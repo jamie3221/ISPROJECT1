@@ -69,5 +69,19 @@ class CustomerAuthController extends Controller
         
         return view('/customer/customer_dashboard', compact('customer'));
     }
+    public function delete()
+{
+    $customerId = Auth::guard('customer')->id();
+
+    if ($customerId) {
+        if (Customer::destroy($customerId)) {
+            return redirect()->route('home')->with('success', 'Account deleted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to delete account.');
+        }
+    }
+
+    return redirect()->back()->with('error', 'Failed to delete account.');
+}
 
 }

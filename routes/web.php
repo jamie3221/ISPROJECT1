@@ -60,3 +60,5 @@ Route::middleware('auth:customer')->group(function () {
     Route::get('/dashboard', [CustomerAuthController::class, 'showDashboard'])->name('customer.dashboard');
     // Other authenticated customer routes
 });
+
+Route::delete('/customer/delete', [CustomerAuthController::class, 'delete'])->name('customer.delete');
