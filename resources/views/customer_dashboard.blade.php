@@ -10,17 +10,21 @@
     <div class="container">
         <h1>Customer Dashboard</h1>
         
-        @if(isset($customer))
+        @php
+        $customerGuard = Auth::guard('customer');
+        @endphp
+        
+        @if(isset($customerGuard))
             @if($customer->profile_picture)
-                <img src="{{ asset($customer->profile_picture) }}" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
+                <img src="{{ asset({{ Auth::guard('customer')->user()->profile_picture }}) }}" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
             @else
-                <!-- Default profile picture or placeholder -->
-                <img src="{{ asset('images/default_profile_picture.png') }}" alt="Default Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
+               
+                <img src="{{ asset('images\profile pictures\Default-Profile-Picture-Transparent-Image.png') }}" alt="Default Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
             @endif
             
-            <p>Name: {{ $customer->first_name }} {{ $customer->middle_name }} {{ $customer->last_name }}</p>
-            <p>Email: {{ $customer->email }}</p>
-            <p>Phone Number: {{ $customer->phone_number }}</p>
+            <p>Name: {{ Auth::guard('customer')->user()->first_name }} {{ Auth::guard('customer')->user()->middle_name }} {{ Auth::guard('customer')->user()->last_name }}</p>
+            <p>Email: {{ Auth::guard('customer')->user()->email }}</p>
+            <p>Phone Number: {{ Auth::guard('customer')->user()->phone_number }}</p>
             
             <div class="actions">
                 <a href="#" class="btn btn-primary">Update Account Details</a>

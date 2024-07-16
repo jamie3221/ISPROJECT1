@@ -57,6 +57,6 @@ Route::get('/customer/dashboard', function () {
 })->name('customer.dashboard');
 
 Route::middleware('auth:customer')->group(function () {
-    Route::get('/dashboard', 'CustomerController@showDashboard')->name('customer.dashboard');
+    Route::get('/dashboard', [CustomerAuthController::class, 'showDashboard'])->name('customer.dashboard');
     // Other authenticated customer routes
 });
