@@ -28,7 +28,7 @@
             
             <div class="actions">
                 <a href="{{route ('customer.update')}}" class="btn btn-primary">Update Account Details</a>
-                <a href="#" class="btn btn-info">Check Service History</a>
+                <a href="{{route ('customer.history')}}" class="btn btn-info">Check Service History</a>
                 
                 <form action="#" method="POST" style="display: inline-block;">
                     @csrf

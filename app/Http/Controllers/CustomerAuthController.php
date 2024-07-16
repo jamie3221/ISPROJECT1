@@ -86,8 +86,11 @@ class CustomerAuthController extends Controller
     }
     public function showServiceHistory()
     {
-        $customer = Auth::guard('customer')->user();
-        $serviceRequests = $customer->serviceRequests()->with('service')->orderBy('created_at', 'desc')->get();
+        $customerId = Auth::guard('customer')->id(); // Get current customer's ID
+        $serviceRequests = ServiceRequest::where('customer_id', $customerId)
+                            ->with('service') // Eager load related service
+                            ->orderBy('created_at', 'desc')
+                            ->get();
 
         return view('customer.customer_service_history', compact('serviceRequests'));
     }
