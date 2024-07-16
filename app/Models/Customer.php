@@ -41,16 +41,4 @@ class Customer extends Authenticatable
     {
         return $this->hasOne(BlacklistedCustomer::class, 'customer_id');
     }
-    public function deleteCustomer()
-    {
-        // Delete related records if needed
-        // For example, delete ratings, comments, or other related data
-
-        // Delete the customer record
-        $this->ratings()->delete();
-        $this->comments()->delete();
-        $this->reports()->delete();
-        $this->blacklisted()->delete();
-        return $this->delete();
-    }
 }

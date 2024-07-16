@@ -62,3 +62,9 @@ Route::middleware('auth:customer')->group(function () {
 });
 
 Route::delete('/customer/delete', [CustomerAuthController::class, 'delete'])->name('customer.delete');
+
+Route::get('/customer/update', function () {
+    return view('/customer/customer_detail_update');
+})->name('customer.update');
+
+Route::post('/customer/update', [CustomerAuthController::class, 'update'])->name('customer.update.submit');
