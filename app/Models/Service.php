@@ -28,4 +28,9 @@ class Service extends Model
     public function serviceProviderReports(){
         return $this->hasMany(ServiceProviderReport::class,'service_id');
     }
+    public function serviceRequests()
+    {
+        return $this->hasMany(ServiceRequest::class, 'service_id');
+    }
+
 }

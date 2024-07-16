@@ -20,4 +20,9 @@ class ServiceProvider extends Model
     public function blacklisted(){
         return $this->hasOne(BlacklistedServiceProvider::class,'service_provider_id');
     }
+
+    public function serviceRequests()
+    {
+        return $this->hasMany(ServiceRequest::class, 'service_provider_id');
+    }
 }

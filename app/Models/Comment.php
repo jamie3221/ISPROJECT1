@@ -16,4 +16,9 @@ class Comment extends Model
     public function service(){
         return $this->belongsTo(Service::class,'service_id');
     }
+    public function serviceRequest()
+{
+    return $this->belongsTo(ServiceRequest::class, 'service_request_id');
+}
+
 }

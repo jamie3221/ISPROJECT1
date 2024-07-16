@@ -13,4 +13,9 @@ class BlacklistedCustomer extends Model
     public function customer(){
         return $this->belongsTo(Customer::class, 'customer_id');
     }
+    public function serviceRequests()
+{
+    return $this->hasMany(ServiceRequest::class, 'customer_id');
+}
+
 }

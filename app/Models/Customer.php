@@ -41,4 +41,10 @@ class Customer extends Authenticatable
     {
         return $this->hasOne(BlacklistedCustomer::class, 'customer_id');
     }
+
+    public function serviceRequests()
+    {
+        return $this->hasMany(ServiceRequest::class, 'customer_id');
+    }
+
 }

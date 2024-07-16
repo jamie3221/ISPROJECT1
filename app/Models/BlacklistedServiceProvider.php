@@ -13,4 +13,9 @@ class BlacklistedServiceProvider extends Model
     public function provider(){
         return $this->belongsTo(ServiceProvider::class, 'service_provider_id');
     }
+    public function serviceRequests()
+{
+    return $this->hasMany(ServiceRequest::class, 'service_provider_id');
+}
+
 }

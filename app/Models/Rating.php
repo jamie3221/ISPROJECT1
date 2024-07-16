@@ -16,4 +16,9 @@ class Rating extends Model
     public function customer(){
         return $this->belongsTo(Customer::class,'customer_id');
     }
+    public function serviceRequest()
+{
+    return $this->belongsTo(ServiceRequest::class, 'service_request_id');
+}
+
 }
