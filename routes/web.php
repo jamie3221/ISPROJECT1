@@ -72,3 +72,7 @@ Route::post('/customer/update', [CustomerAuthController::class, 'update'])->name
 Route::get('/customer/history', function () {
     return view('/customer/customer_history');
 })->name('customer.history');
+
+Route::get('/service_provider/home', function () {
+    return view('/service_provider/service_provider_home');
+})->name('service_provider.home');

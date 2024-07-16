@@ -34,6 +34,14 @@
                 </div>
                 <div id="service-provider-login" class="login-form">
                     <h2>Service Provider Login</h2>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     <form action="{{route('service_provider.login.submit')}}" method="POST">
                         @csrf
                         <input type="email" name="email" placeholder="Email" required>
@@ -42,7 +50,6 @@
                     </form>
                 </div>
                 <div class="login-options">
-                    <a href="#">Forgot Password?</a>
                     <p>Don't have an account? <a href="{{route('register')}}">Register for free!</a></p>    
                 </div>
             </div>

@@ -15,19 +15,25 @@ class ServiceProviderAuthController extends Controller
     }
     public function login(Request $request)
     {
+        // Validate the incoming request data
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
+        // Redirect back with errors if validation fails
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Attempt to authenticate the service provider using credentials
         $credentials = $request->only('email', 'password');
         if (Auth::guard('service_provider')->attempt($credentials)) {
-            return redirect()->route('home');
+            // Authentication successful, redirect to service provider's home page
+            return redirect()->route('service_provider.home');
         }
+
+        // Authentication failed, redirect back with error message
         return redirect()->back()->with('error', 'Invalid credentials');
     }
     public function showRegisterForm()
