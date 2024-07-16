@@ -20,7 +20,7 @@ class CustomerAuthController extends Controller
         }
         $credentials = $request->only('email', 'password');
         if (Auth::guard('customer')->attempt($credentials)) {
-            return redirect()->route('test');
+            return redirect()->route('customer.home');
         }
         return redirect()->back()->with('error', 'Invalid credentials');
     }
@@ -52,5 +52,15 @@ class CustomerAuthController extends Controller
             'profile_picture' => $profilePicturePath,
         ]);
         return redirect()->route('test')->with('success', 'Account created successfully');
+    }
+    public function logout(Request $request)
+    {
+        Auth::guard('customer')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
