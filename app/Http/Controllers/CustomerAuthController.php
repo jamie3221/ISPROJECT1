@@ -67,7 +67,7 @@ class CustomerAuthController extends Controller
     {
         $customer = Auth::guard('customer')->user();
         
-        return view('customer_dashboard', compact('customer'));
+        return view('/customer/customer_dashboard', compact('customer'));
     }
 
 }

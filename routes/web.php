@@ -47,13 +47,13 @@ Route::get('/admin.login', [AdminAuthController::class, 'showLoginForm'])->name(
 Route::post('/admin.login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 
 Route::get('/customer/home', function () {
-    return view('customer_home');
+    return view('/customer/customer_home');
 })->name('customer.home');
 
 Route::post('/customer/logout', [CustomerAuthController::class, 'logout'])->name('customer.logout');
 
 Route::get('/customer/dashboard', function () {
-    return view('customer_dashboard');
+    return view('/customer/customer_dashboard');
 })->name('customer.dashboard');
 
 Route::middleware('auth:customer')->group(function () {
