@@ -7,6 +7,7 @@
         <title>Admin Login</title>
     </head>
     <body>
+    <a href="{{route('home')}}" class="home-btn">Back to Home</a>
         <div class="container">
             <div class="login-box">
                 <div id="admin-login" class="login-form">

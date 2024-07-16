@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\ServiceProviderAuthController;
@@ -33,3 +34,14 @@ Route::get('/test', function () {
 Route::get('/login', function () {
     return view('auth/login');
 })->name('login');
+
+Route::get('/register', function () {
+    return view('auth/register');
+})->name('register');
+
+Route::get('/admin/login', function () {
+    return view('auth/admin_login');
+})->name('admin.login');
+
+Route::get('/admin.login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin.login', [AdminAuthController::class, 'login'])->name('admin.login.submit');

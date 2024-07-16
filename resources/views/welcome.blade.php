@@ -14,6 +14,6 @@
                 <a class="btn" href="{{route('register')}}">Register</a>
             </div>
         </div>
-        <a class="admin-login-link" href="#">Admin Login</a>
+        <a class="admin-login-link" href="admin.login">Admin Login</a>
     </body>
 </html>
