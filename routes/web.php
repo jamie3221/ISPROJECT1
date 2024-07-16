@@ -51,3 +51,12 @@ Route::get('/customer/home', function () {
 })->name('customer.home');
 
 Route::post('/customer/logout', [CustomerAuthController::class, 'logout'])->name('customer.logout');
+
+Route::get('/customer/dashboard', function () {
+    return view('customer_dashboard');
+})->name('customer.dashboard');
+
+Route::middleware('auth:customer')->group(function () {
+    Route::get('/dashboard', 'CustomerController@showDashboard')->name('customer.dashboard');
+    // Other authenticated customer routes
+});

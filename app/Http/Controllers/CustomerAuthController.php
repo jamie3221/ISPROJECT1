@@ -63,4 +63,11 @@ class CustomerAuthController extends Controller
 
         return redirect('/');
     }
+    public function showDashboard()
+    {
+        $customer = Auth::guard('customer')->user();
+        
+        return view('customer.dashboard', compact('customer'));
+    }
+
 }
