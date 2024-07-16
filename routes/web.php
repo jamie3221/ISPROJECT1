@@ -82,3 +82,15 @@ Route::post('/service_provider/logout', [ServiceProviderAuthController::class, '
 Route::get('/service_provider/dashboard', function () {
     return view('/serviceProvider/service_provider_dashboard');
 })->name('service_provider.dashboard');
+
+Route::get('/service_provider/update', function () {
+    return view('/serviceProvider/service_provider_detail_update');
+})->name('service_provider.update');
+
+Route::post('/service_provider/update', [ServiceProviderAuthController::class, 'update'])->name('service_provider.update.submit');
+
+Route::get('/service_provider/history', function () {
+    return view('/serviceProvider/service_provider_history');
+})->name('service_provider.history');
+
+Route::delete('/service_provider/delete', [ServiceProviderAuthController::class, 'delete'])->name('service_provider.delete');

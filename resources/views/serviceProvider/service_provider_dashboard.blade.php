@@ -16,21 +16,21 @@
         @endphp
         
         @if(isset($providerGuard))
-            @if($provider->profile_picture)
-                <img src="{{ asset($provider->profile_picture) }}" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
+            @if(Auth::guard('service_provider')->user()->profile_picture)
+                <img src="{{ asset(Auth::guard('service_provider')->user()->profile_picture) }}" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
             @else
                 <img src="{{ asset('images/profile_pictures/Default-Profile-Picture.png') }}" alt="Default Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
             @endif
             
-            <p>Name: {{ $provider->business_name ?: $provider->first_name }}</p>
-            <p>Email: {{ $provider->email }}</p>
-            <p>Phone Number: {{ $provider->phone_number }}</p>
+            <p>Name: {{ Auth::guard('service_provider')->user()->business_name ?: Auth::guard('service_provider')->user()->first_name }}</p>
+            <p>Email: {{ Auth::guard('service_provider')->user()->email }}</p>
+            <p>Phone Number: {{ Auth::guard('service_provider')->user()->phone_number }}</p>
             
             <div class="actions">
-                <a href="{{ route('service_provider.update') }}" class="btn btn-primary">Update Account Details</a>
-                <a href="{{ route('service_provider.history') }}" class="btn btn-info">Check Service History</a>
+                <a href="{{route ('service_provider.update')}}" class="btn btn-primary">Update Account Details</a>
+                <a href="{{route ('service_provider.history')}}" class="btn btn-info">Check Service History</a>
                 
-                <form action="#" method="POST" style="display: inline-block;">
+                <form action="{{route('service_provider.delete')}}" method="POST" style="display: inline-block;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete Account</button>

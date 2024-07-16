@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="top-bar">
-        <a href="#">Dashboard</a>
+        <a href="{{route ('service_provider.dashboard')}}">Dashboard</a>
         <form action="{{route ('service_provider.logout')}}" method="POST" style="display: inline;">
             @csrf
             <button type="submit" class="logout-btn">Logout</button>
