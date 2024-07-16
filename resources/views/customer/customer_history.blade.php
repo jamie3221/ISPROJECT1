@@ -7,6 +7,7 @@
     <title>Service History</title>
 </head>
 <body>
+<a href="{{route('customer.dashboard')}}" class="dash-btn">Back to Dashboard</a>
     <div class="container">
         <h1>Service History</h1>
         

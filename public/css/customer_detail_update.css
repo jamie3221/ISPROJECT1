@@ -97,3 +97,24 @@ input[type="file"] {
 h1{
     color: #000;
 }
+
+.dash-btn{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #00b5c0;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+.dash-btn:hover {
+    background-color: #5f72be; 
+}
+.dash-btn:active {
+    background-color: #a080c0; 
+}

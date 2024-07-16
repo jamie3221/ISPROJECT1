@@ -7,6 +7,7 @@
     <title>Update Customer Details</title>
 </head>
 <body>
+<a href="{{route('customer.dashboard')}}" class="dash-btn">Back to Dashboard</a>
     <div class="container">
         <h1>Update Customer Details</h1>
         

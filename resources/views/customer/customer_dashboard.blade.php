@@ -7,6 +7,7 @@
     <title>Customer Dashboard</title>
 </head>
 <body>
+<a href="{{route('customer.home')}}" class="home-btn">Back to Home</a>
     <div class="container">
         <h1>Customer Dashboard</h1>
         

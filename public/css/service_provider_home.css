@@ -7,10 +7,9 @@ body {
     animation: gradientAnimation 15s ease infinite;
     min-height: 100vh;
     margin: 0;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
 @keyframes gradientAnimation {
@@ -63,46 +62,63 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.content-box {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    text-align: left;
 }
 
-.container h1 {
-    text-align: center;
+.content-box h2 {
+    color: black;
     margin-bottom: 20px;
 }
 
-.container img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    display: block;
+.service-request {
+    background: #00b5c0;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
 }
 
-.container p {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.actions {
+.service-grid {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 20px;
+}
+
+.service-item {
+    background: #00b5c0;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1 1 calc(33.333% - 40px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .btn {
-    background-color: rgba(0, 181, 192, 0.9);
-    color: #fff;
+    display: inline-block;
     padding: 10px 20px;
-    border: none;
+    margin: 10px 0;
+    background-color: #00b5c0;
+    color: #fff;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
@@ -110,12 +126,8 @@ body {
     background-color: #5f72be;
 }
 
-.btn-danger {
-    background-color: #e52d27;
-}
-
-.btn-danger:hover {
-    background-color: #ff5a54;
+.btn:active {
+    background-color: #7389e3;
 }
 
 .bottom-bar {
@@ -127,25 +139,4 @@ body {
 
 .bottom-bar p {
     margin: 0;
-}
-
-.home-btn{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: #00b5c0;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    padding: 10px 20px;
-    margin-top: 20px;
-}
-.home-btn:hover {
-    background-color: #5f72be; 
-}
-.home-btn:active {
-    background-color: #a080c0; 
 }
