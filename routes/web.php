@@ -74,5 +74,11 @@ Route::get('/customer/history', function () {
 })->name('customer.history');
 
 Route::get('/service_provider/home', function () {
-    return view('/service_provider/service_provider_home');
+    return view('/serviceProvider.service_provider_home');
 })->name('service_provider.home');
+
+Route::post('/service_provider/logout', [ServiceProviderAuthController::class, 'logout'])->name('service_provider.logout');
+
+Route::get('/service_provider/dashboard', function () {
+    return view('/serviceProvider/service_provider_dashboard');
+})->name('service_provider.dashboard');

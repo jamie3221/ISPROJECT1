@@ -8,15 +8,21 @@
 </head>
 <body>
     <div class="top-bar">
-        <a href="{{ route('service_provider.dashboard') }}">Dashboard</a>
-        <form action="{{ route('service_provider.logout') }}" method="POST" style="display: inline;">
+        <a href="#">Dashboard</a>
+        <form action="{{route ('service_provider.logout')}}" method="POST" style="display: inline;">
             @csrf
             <button type="submit" class="logout-btn">Logout</button>
         </form>
     </div>
     
     <div class="container">
-        <h1>Hello, {{ Auth::guard('service_provider')->user()->first_name }} / {{ Auth::guard('service_provider')->user()->business_name }}</h1>
+        <h1>Hello,
+            @if(Auth::guard('service_provider')->user()->business_name)
+                {{ Auth::guard('service_provider')->user()->business_name }}
+            @else
+                {{ Auth::guard('service_provider')->user()->first_name }}
+            @endif
+        </h1>
 
         <div class="content-box">
             <h2>Applications by Customers</h2>
@@ -47,7 +53,7 @@
                     <p>No services found.</p>
                 @endif
             </div>
-            <a href="{{ route('service_provider.create_service') }}" class="btn btn-primary">Create Service Posting</a>
+            <a href="#" class="btn btn-primary">Create Service Posting</a>
         </div>
     </div>
 

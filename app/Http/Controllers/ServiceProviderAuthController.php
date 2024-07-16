@@ -89,15 +89,20 @@ class ServiceProviderAuthController extends Controller
     {
         $serviceProvider = Auth::guard('service_provider')->user();
         
-        $serviceRequests = ServiceRequest::where('service_provider_id', $serviceProvider->id)
+        $serviceRequests = ServiceRequest::where('service_provider_id', $serviceProvider->service_provider_id)
             ->with('customer')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $services = Service::where('service_provider_id', $serviceProvider->id)
+        $services = Service::where('service_provider_id', $serviceProvider->service_provider_id)
             ->orderBy('created_at', 'desc')
             ->get();
 
         return view('service_provider.home', compact('serviceProvider', 'serviceRequests', 'services'));
+    }
+    public function logout()
+    {
+        Auth::guard('service_provider')->logout();
+        return redirect()->route('home');
     }
 }

@@ -44,7 +44,7 @@ class ServiceProvider extends Model implements Authenticatable
     // Implementing the Authenticatable methods
     public function getAuthIdentifierName()
     {
-        return 'id'; // Assuming your primary key is 'id'
+        return 'service_provider_id'; // Assuming your primary key is 'id'
     }
 
     public function getAuthIdentifier()
