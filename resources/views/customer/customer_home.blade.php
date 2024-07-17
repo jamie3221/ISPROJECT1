@@ -65,9 +65,9 @@
                     @endif
                 </p>
 
-                <div class="details" id="details{{ $service->service_id }}">
+                <div class="details" id="details{{ $service->id }}">
                     <p><strong>Description:</strong> {{ $service->description }}</p>
-                    <form action="{{ route('service.request', $service->id) }}" method="POST">
+                    <form action="{{ route('service.request', $service->service_id) }}" method="POST">
                         @csrf
                         <button type="submit">Request Service</button>
                     </form>

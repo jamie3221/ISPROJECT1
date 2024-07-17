@@ -138,5 +138,5 @@ Route::get('/service/info', function () {
     return view('serviceProvider.service_info');
 })->name('service.info');
 
-Route::post('/service/request/{service}', [ServiceRequestController::class, 'store'])->name('service.request');
+Route::post('/service/request/{service_id}', [ServiceRequestController::class, 'store'])->name('service.request');
 
