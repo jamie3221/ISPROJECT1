@@ -4,6 +4,9 @@ use App\Http\Controllers\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\ServiceProviderAuthController;
+use App\Http\Controllers\ServiceRequestController;
+
+// ...
 
 
 // Default route to welcome page
@@ -137,6 +140,4 @@ Route::get('/service/info', function () {
     return view('serviceProvider.service_info');
 })->name('service.info');
 
-Route::get('/service/show', function () {
-    return view('service.show');
-})->name('service.show');
+Route::post('/service/request/{service}', [ServiceRequestController::class, 'store'])->name('service.request');
