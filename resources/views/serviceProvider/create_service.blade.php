@@ -41,14 +41,9 @@
                         $locations = Location::all();
                     @endphp
                     @foreach ($locations as $location)
-                        <option value="{{ $location->id }}">{{ $location->location_name }}</option>
+                        <option value="{{ $location->location_id }}">{{ $location->location_name }}</option>
                     @endforeach
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="pictures">Pictures</label>
-                <input type="file" id="pictures" name="pictures[]" multiple accept="image/*">
-                <small>Upload one or more pictures for this service (JPEG, PNG, GIF, or BMP).</small>
             </div>
 
             <button type="submit" class="submit-btn">Create Service</button>

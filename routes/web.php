@@ -129,3 +129,5 @@ Route::post('/service/store', [ServiceProviderAuthController::class, 'store'])->
 Route::get('/service/create', function () {
     return view('serviceProvider.create_service');
 })->name('service.create');
+
+Route::get('/service/{id}', [ServiceProviderAuthController::class, 'show'])->name('service.show');

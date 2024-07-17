@@ -36,9 +36,15 @@
 
     <div class="services-box">
         <h2>Services Offered</h2>
+        @php
+            use App\Models\Service;
+            $services = Service::all();
+        @endphp
         <div class="services-grid">
             @forelse($services as $service)
-                <div class="service-item">{{ $service->service_name }}</div>
+                <div class="service-item">
+                    <a href="{{ route('service.info', $service->id) }}">{{ $service->service_name }}</a>
+                </div>
             @empty
                 <p>No services offered.</p>
             @endforelse

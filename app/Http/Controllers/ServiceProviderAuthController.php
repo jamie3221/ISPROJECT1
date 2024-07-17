@@ -188,7 +188,6 @@ class ServiceProviderAuthController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric',
             // Add more validation rules as needed
         ]);
 
@@ -196,8 +195,6 @@ class ServiceProviderAuthController extends Controller
         $service = new Service();
         $service->title = $request->input('title');
         $service->description = $request->input('description');
-        $service->price = $request->input('price');
-        // Assign service provider ID assuming authenticated
         $service->service_provider_id = auth::guard('service_provider')->user()->id;
         
         // Save the service
@@ -221,7 +218,6 @@ class ServiceProviderAuthController extends Controller
         $validatedData = $request->validate([
             'service_name' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric',
             'location_id' => 'required|exists:locations,id',
             'pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validate each picture
         ]);
@@ -239,13 +235,17 @@ class ServiceProviderAuthController extends Controller
         $service = new Service();
         $service->service_name = $validatedData['service_name'];
         $service->description = $validatedData['description'];
-        $service->price = $validatedData['price'];
         $service->location_id = $validatedData['location_id'];
-        $service->service_provider_id = Auth::guard('service_provider')->user()->id;
-        $service->pictures = $picturePaths; // Save picture paths in database field
+        $service->service_provider_id = Auth::guard('service_provider')->user()->location_id;
         $service->save();
 
         // Redirect back with success message
         return redirect()->route('service.dashboard')->with('success', 'Service listing created successfully.');
+    }
+    public function show($location_id)
+    {
+        $service = Service::findOrFail($location_id);
+
+        return view('services.show', compact('service'));
     }
 }
