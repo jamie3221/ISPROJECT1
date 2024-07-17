@@ -218,7 +218,7 @@ class ServiceProviderAuthController extends Controller
         $validatedData = $request->validate([
             'service_name' => 'required|string|max:255',
             'description' => 'required|string',
-            'location_id' => 'required|exists:locations,id',
+            'location_id' => 'required|exists:locations,location_id',
             'pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validate each picture
         ]);
 
@@ -236,16 +236,18 @@ class ServiceProviderAuthController extends Controller
         $service->service_name = $validatedData['service_name'];
         $service->description = $validatedData['description'];
         $service->location_id = $validatedData['location_id'];
-        $service->service_provider_id = Auth::guard('service_provider')->user()->location_id;
+        $service->service_provider_id = Auth::guard('service_provider')->user()->service_provider_id;
         $service->save();
 
         // Redirect back with success message
-        return redirect()->route('service.dashboard')->with('success', 'Service listing created successfully.');
+        return redirect()->route('service_provider.home')->with('success', 'Service listing created successfully.');
     }
-    public function show($location_id)
+    public function show($service_id)
     {
-        $service = Service::findOrFail($location_id);
+        $service = Service::findOrFail($service_id);
 
         return view('services.show', compact('service'));
     }
+  
+    
 }

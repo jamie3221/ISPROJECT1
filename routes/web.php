@@ -130,4 +130,13 @@ Route::get('/service/create', function () {
     return view('serviceProvider.create_service');
 })->name('service.create');
 
-Route::get('/service/{id}', [ServiceProviderAuthController::class, 'show'])->name('service.show');
+Route::get('/service/{service_id}', [ServiceProviderAuthController::class, 'show'])->name('service.show');
+
+
+Route::get('/service/info', function () {
+    return view('serviceProvider.service_info');
+})->name('service.info');
+
+Route::get('/service/show', function () {
+    return view('service.show');
+})->name('service.show');

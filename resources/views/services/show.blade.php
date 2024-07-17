@@ -10,11 +10,17 @@
     <div class="container">
         <h1>Service Details</h1>
         
-        <h2>{{ $service->service_name}}</h2>
+        <h2>{{ $service->service_name }}</h2>
         <p>{{ $service->description }}</p>
-        <p><strong>Provider:</strong> {{ $service->provider->name }}</p>
+        <p><strong>Provider:</strong> 
+            @if ($service->provider->is_individual)
+                {{ $service->provider->first_name }}
+            @else
+                {{ $service->provider->business_name }}
+            @endif
+        </p>
 
-        <form action="{{ route('service.request', $service->id) }}" method="POST">
+        <form action="{{ route('service.request', $service->serivce_id) }}" method="POST">
             @csrf
             <button type="submit">Request Service</button>
         </form>

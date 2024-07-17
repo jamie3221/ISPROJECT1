@@ -43,7 +43,7 @@
         <div class="services-grid">
             @forelse($services as $service)
                 <div class="service-item">
-                    <a href="{{ route('service.info', $service->id) }}">{{ $service->service_name }}</a>
+                    <a href="{{ route('service.show', $service->service_id) }}">{{ $service->service_name }}</a>
                 </div>
             @empty
                 <p>No services offered.</p>
