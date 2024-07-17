@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\ServiceProviderAuthController;
-use App\Http\Controllers\ChatController;
+
 
 // Default route to welcome page
 Route::get('/', function () {
@@ -122,3 +122,10 @@ Route::get('/admin/manage', function() {
 })->name('admin.manage');
 
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+Route::get('/service/create', [ServiceProviderAuthController::class, 'create'])->name('service.create');
+Route::post('/service/store', [ServiceProviderAuthController::class, 'store'])->name('service.store');
+
+Route::get('/service/create', function () {
+    return view('serviceProvider.create_service');
+})->name('service.create');

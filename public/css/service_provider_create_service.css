@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
     background-color: #8e9eab;
@@ -7,9 +7,10 @@ body {
     animation: gradientAnimation 15s ease infinite;
     min-height: 100vh;
     margin: 0;
-    display: flex;
-    flex-direction: column;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes gradientAnimation {
@@ -26,17 +27,17 @@ body {
 
 .container {
     max-width: 800px;
-    margin: 20px auto;
+    width: 80%;
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .container h1 {
-    text-align: center;
+    color: #333;
     margin-bottom: 20px;
-    color: black;
 }
 
 .alert {
@@ -46,89 +47,78 @@ body {
     font-weight: bold;
 }
 
-.alert-success {
-    background-color: #4CAF50;
-    color: white;
-}
-
 .alert-danger {
     background-color: #f44336;
     color: white;
 }
 
-.content-box {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.content-box h2 {
-    font-size: 1.5rem;
-    color: #00b5c0;
-    margin-bottom: 10px;
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
 }
 
-.content-box .btn {
+.form-group input[type=text],
+.form-group input[type=email],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group small {
+    display: block;
+    color: #666;
+    margin-top: 5px;
+}
+
+.form-group input[type=file] {
+    margin-top: 5px;
+}
+
+.btn {
     display: inline-block;
-    margin-top: 10px;
     padding: 10px 20px;
     background-color: #00b5c0;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    border: none;
-    cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 1rem;
 }
 
-.content-box .btn:hover {
+.btn:hover {
     background-color: #5f72be;
 }
 
-.content-box .btn:active {
-    background-color: #a080c0;
+.btn:active {
+    background-color: #7389e3;
 }
-
-.dash-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+.submit-btn {
+    display: inline-block;
+    padding: 10px 20px;
     background-color: #00b5c0;
     color: #fff;
     text-decoration: none;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
-    padding: 10px 20px;
-}
 
-.dash-btn:hover {
-    background-color: #5f72be; 
 }
-
-.dash-btn:active {
-    background-color: #a080c0; 
+submit-btn:hover {
+    background-color: #5f72be;
 }
-#logoutForm {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-#logoutForm button {
-    padding: 10px 20px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#logoutForm button:hover {
-    background-color: #d32f2f;
+submit-btn:active {
+    background-color: #7389e3;
 }

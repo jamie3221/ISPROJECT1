@@ -7,7 +7,10 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
-    <a href="{{route('admin.logout')}}" class="dash-btn">Logout</a>
+<form id="logoutForm" action="{{ route('admin.logout') }}" method="POST">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
     <div class="container">
         <h1>Admin Dashboard</h1>
 

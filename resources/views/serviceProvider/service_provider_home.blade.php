@@ -53,7 +53,7 @@
                     <p>No services found.</p>
                 @endif
             </div>
-            <a href="#" class="btn btn-primary">Create Service Posting</a>
+            <a href="{{route('service.create')}}" class="btn btn-primary">Create Service Posting</a>
         </div>
     </div>
 

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ServiceProvider;
 use App\Models\ServiceRequest;
-use App\Models\Service; // Add this line to import the Service class
+use App\Models\Service;
+use App\Models\Location; // Add this line to import the Location class
 class ServiceProviderAuthController extends Controller
 {
     public function showLoginForm()
@@ -181,6 +182,70 @@ class ServiceProviderAuthController extends Controller
 
         return redirect()->back()->with('error', 'Failed to delete account.');
     }
+    public function createService(Request $request)
+    {
+        // Validate input
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            // Add more validation rules as needed
+        ]);
 
+        // Create new service listing
+        $service = new Service();
+        $service->title = $request->input('title');
+        $service->description = $request->input('description');
+        $service->price = $request->input('price');
+        // Assign service provider ID assuming authenticated
+        $service->service_provider_id = auth::guard('service_provider')->user()->id;
+        
+        // Save the service
+        $service->save();
 
+        // Redirect with success message or to a confirmation page
+        return redirect()->back()->with('success', 'Service listed successfully.');
+    }
+    public function create()
+    {
+        // Retrieve locations from the database
+        $locations = Location::all();
+
+        return view('service.create_service', compact('locations'));
+    }
+
+    // Method to store the created service in the database
+    public function store(Request $request)
+    {
+        // Validate incoming request data
+        $validatedData = $request->validate([
+            'service_name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'location_id' => 'required|exists:locations,id',
+            'pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validate each picture
+        ]);
+
+        // Handle picture uploads
+        $picturePaths = [];
+        if ($request->hasFile('pictures')) {
+            foreach ($request->file('pictures') as $picture) {
+                $path = $picture->store('service_pictures', 'public'); // Store picture in storage/app/public/service_pictures
+                $picturePaths[] = $path;
+            }
+        }
+
+        // Create service record in the database
+        $service = new Service();
+        $service->service_name = $validatedData['service_name'];
+        $service->description = $validatedData['description'];
+        $service->price = $validatedData['price'];
+        $service->location_id = $validatedData['location_id'];
+        $service->service_provider_id = Auth::guard('service_provider')->user()->id;
+        $service->pictures = $picturePaths; // Save picture paths in database field
+        $service->save();
+
+        // Redirect back with success message
+        return redirect()->route('service.dashboard')->with('success', 'Service listing created successfully.');
+    }
 }

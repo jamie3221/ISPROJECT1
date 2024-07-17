@@ -8,11 +8,11 @@
 </head>
 <body>
     <div class="top-bar">
-        <a href="{{route('customer.dashboard')}}">Dashboard</a>
+        <a href="{{ route('customer.dashboard') }}">Dashboard</a>
         <form id="logoutForm" action="{{ route('customer.logout') }}" method="POST">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
     </div>
 
     <div class="welcome-message">
@@ -25,28 +25,23 @@
 
     <div class="content-box">
         <h2>Requested Services</h2>
-        <!-- List of requested services goes here -->
         <ul>
-            <!-- Example item -->
-            <li>Service Request 1</li>
-            <li>Service Request 2</li>
-            <li>Service Request 3</li>
+            @forelse(Auth::guard('customer')->user()->serviceRequests as $request)
+                <li>{{ $request->service->service_name }}</li>
+            @empty
+                <li>No requested services.</li>
+            @endforelse
         </ul>
     </div>
 
     <div class="services-box">
         <h2>Services Offered</h2>
         <div class="services-grid">
-            <!-- Example items -->
-            <div class="service-item">Service 1</div>
-            <div class="service-item">Service 2</div>
-            <div class="service-item">Service 3</div>
-            <div class="service-item">Service 4</div>
-            <div class="service-item">Service 5</div>
-            <div class="service-item">Service 6</div>
-            <div class="service-item">Service 7</div>
-            <div class="service-item">Service 8</div>
-            <div class="service-item">Service 9</div>
+            @forelse($services as $service)
+                <div class="service-item">{{ $service->service_name }}</div>
+            @empty
+                <p>No services offered.</p>
+            @endforelse
         </div>
     </div>
 
