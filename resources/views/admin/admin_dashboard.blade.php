@@ -7,6 +7,7 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
+    <a href="#" class="dash-btn">Logout</a>
     <div class="container">
         <h1>Admin Dashboard</h1>
 
@@ -15,66 +16,27 @@
                 {{ session('success') }}
             </div>
         @endif
+        
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
 
-        <h2>Reports</h2>
-        <div class="reports">
-            @foreach($reports as $report)
-                <div class="report">
-                    <h3>{{ $report->title }}</h3>
-                    <p>{{ $report->description }}</p>
-                </div>
-            @endforeach
+        <div class="content-box">
+            <h2>Reports</h2>
+            <a href="{{route('admin.reports')}}" class="btn">View Reports</a>
         </div>
 
-        <h2>Manage Users</h2>
-        <div class="users">
-            @foreach($users as $user)
-                <div class="user">
-                    <p>{{ $user->name }} ({{ $user->email }})</p>
-                    <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button>
-                    </form>
-                </div>
-            @endforeach
+        <div class="content-box">
+            <h2>Manage Users</h2>
+            <a href="#}" class="btn">Manage Users</a>
         </div>
 
-        <h2>Manage Admins</h2>
-        <div class="admins">
-            @foreach($admins as $admin)
-                <div class="admin">
-                    <p>{{ $admin->name }} ({{ $admin->email }})</p>
-                    <form action="{{ route('admin.admins.delete', $admin->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button>
-                    </form>
-                </div>
-            @endforeach
+        <div class="content-box">
+            <h2>Manage Admins</h2>
+            <a href="#" class="btn">Manage Admins</a>
         </div>
-
-        <h2>Create New Admin</h2>
-        <form action="{{ route('admin.admins.create') }}" method="POST">
-            @csrf
-            <div>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div>
-                <label for="password_confirmation">Confirm Password:</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" required>
-            </div>
-            <button type="submit">Create Admin</button>
-        </form>
     </div>
 </body>
 </html>

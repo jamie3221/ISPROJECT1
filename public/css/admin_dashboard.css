@@ -56,51 +56,21 @@ body {
     color: white;
 }
 
-.reports, .users, .admins {
+.content-box {
     margin-top: 20px;
-}
-
-.report, .user, .admin {
-    background-color: #fff;
     padding: 20px;
-    margin-bottom: 20px;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.report h3, .user p, .admin p {
-    font-size: 1.2rem;
+.content-box h2 {
+    font-size: 1.5rem;
     color: #00b5c0;
     margin-bottom: 10px;
 }
 
-.report p, .user p, .admin p {
-    margin-bottom: 5px;
-}
-
-form {
-    margin-top: 20px;
-}
-
-form div {
-    margin-bottom: 10px;
-}
-
-label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-input[type="text"], input[type="email"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-button {
+.content-box .btn {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 20px;
@@ -114,10 +84,32 @@ button {
     font-size: 1rem;
 }
 
-button:hover {
+.content-box .btn:hover {
     background-color: #5f72be;
 }
 
-button:active {
+.content-box .btn:active {
     background-color: #a080c0;
+}
+
+.dash-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #00b5c0;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+}
+
+.dash-btn:hover {
+    background-color: #5f72be; 
+}
+
+.dash-btn:active {
+    background-color: #a080c0; 
 }

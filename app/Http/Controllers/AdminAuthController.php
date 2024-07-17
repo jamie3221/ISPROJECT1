@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\CustomerReport;
+use App\Models\ServiceProviderReport;
 
 class AdminAuthController extends Controller
 {
@@ -21,10 +23,18 @@ class AdminAuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         $credentials = $request->only('email', 'password');
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('test');
+        if (Auth::guard('system_administrator')->attempt($credentials)) {
+            return redirect()->route('admin.dashboard');
         }
         return redirect()->back()->with('error', 'Invalid credentials');
     }
+    public function reports()
+    {
+        $reports = CustomerReport::all();
+        $reports = ServiceProviderReport::all();
+        
+        return view('admin.reports', compact('customerReports', 'serviceProviderReports'));
+    }
+
     
 }

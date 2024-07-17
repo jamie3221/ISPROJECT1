@@ -94,3 +94,9 @@ Route::get('/service_provider/history', function () {
 })->name('service_provider.history');
 
 Route::delete('/service_provider/delete', [ServiceProviderAuthController::class, 'delete'])->name('service_provider.delete');
+
+Route::get('/admin/dashboard', function () {
+    return view('/admin/admin_dashboard');
+})->name('admin.dashboard');
+
+Route::get('/admin/reports', [AdminAuthController::class, 'reports'])->name('admin.reports');

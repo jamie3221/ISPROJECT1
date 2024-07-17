@@ -84,7 +84,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\ServiceProvider::class,
         ],
-        'admins' => [
+        'system_administrators' => [
             'driver' => 'eloquent',
             'model' => App\Models\SystemAdministrator::class,
         ],
