@@ -6,8 +6,6 @@ use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\ServiceProviderAuthController;
 use App\Http\Controllers\ServiceRequestController;
 
-// ...
-
 
 // Default route to welcome page
 Route::get('/', function () {
@@ -141,3 +139,4 @@ Route::get('/service/info', function () {
 })->name('service.info');
 
 Route::post('/service/request/{service}', [ServiceRequestController::class, 'store'])->name('service.request');
+
