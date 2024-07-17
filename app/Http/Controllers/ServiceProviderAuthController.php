@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers;
+
+use App\Models\BlacklistedServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -58,6 +60,10 @@ class ServiceProviderAuthController extends Controller
         return redirect()->back()->withErrors($validator)->withInput();
     }
 
+    if (BlacklistedServiceProvider::where('email', $request->email)->exists()
+    || BlacklistedServiceProvider::where('phone_number', $request->phone_number)->exists()) {
+    return redirect()->back()->with('error', 'You are blacklisted from using our services.');
+}
     $profilePicturePath = null;
     if ($request->hasFile('profile_picture')) {
         $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
@@ -126,6 +132,7 @@ class ServiceProviderAuthController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+
 
         $provider = Auth::guard('service_provider')->user();
 

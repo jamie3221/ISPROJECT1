@@ -17,23 +17,33 @@
         @endif
         
         <div class="reports">
-            @foreach($customerReports as $report)
-                <div class="report">
-                    <h3>{{ $report->title }}</h3>
-                    <p><strong>Report Maker:</strong> {{ $report->report_maker_name }}</p>
-                    <p><strong>Service in Question:</strong> {{ $report->service_name }}</p>
-                    <a href="{{ route('admin.chatroom', ['userId' => $report->report_maker_id, 'serviceId' => $report->service_id]) }}" class="btn btn-primary">Initiate Chat</a>
-                </div>
-            @endforeach
+            <h2>Customer Reports</h2>
+            @if($customerReports->isEmpty())
+                <p>No customer reports available.</p>
+            @else
+                @foreach($customerReports as $report)
+                    <div class="report">
+                        <h3>{{ $report->title }}</h3>
+                        <p><strong>Report Maker:</strong> {{ $report->report_maker_name }}</p>
+                        <p><strong>Service in Question:</strong> {{ $report->service_name }}</p>
+                        <p><strong>Message:</strong> {{ $report->message }}</p>
+                    </div>
+                @endforeach
+            @endif
 
-            @foreach($serviceProviderReports as $report)
-                <div class="report">
-                    <h3>{{ $report->title }}</h3>
-                    <p><strong>Report Maker:</strong> {{ $report->report_maker_name }}</p>
-                    <p><strong>Service in Question:</strong> {{ $report->service_name }}</p>
-                    <a href="{{ route('admin.chatroom', ['userId' => $report->report_maker_id, 'serviceId' => $report->service_id]) }}" class="btn btn-primary">Initiate Chat</a>
-                </div>
-            @endforeach
+            <h2>Service Provider Reports</h2>
+            @if($serviceProviderReports->isEmpty())
+                <p>No service provider reports available.</p>
+            @else
+                @foreach($serviceProviderReports as $report)
+                    <div class="report">
+                        <h3>{{ $report->title }}</h3>
+                        <p><strong>Report Maker:</strong> {{ $report->report_maker_name }}</p>
+                        <p><strong>Service in Question:</strong> {{ $report->service_name }}</p>
+                        <p><strong>Message:</strong> {{ $report->message }}</p>
+                    </div>
+                @endforeach
+            @endif
         </div>
         
         <a href="{{ route('admin.dashboard') }}" class="btn">Back to Dashboard</a>

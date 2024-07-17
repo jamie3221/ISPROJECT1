@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Customer;
 use App\Models\ServiceRequest;
+use App\Models\BlacklistedCustomer;
 class CustomerAuthController extends Controller
 {
     public function showLoginForm(){
@@ -41,6 +42,11 @@ class CustomerAuthController extends Controller
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if (BlacklistedCustomer::where('email', $request->email)->exists()
+            || BlacklistedCustomer::where('phone_number', $request->phone_number)->exists()) {
+            return redirect()->back()->with('error', 'You are blacklisted from using our services.');
         }
         $profilePicturePath = $request->file('profile_picture')->store('public/profile_pictures');
         $customer = Customer::create([

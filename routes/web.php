@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\ServiceProviderAuthController;
+use App\Http\Controllers\ChatController;
 
 // Default route to welcome page
 Route::get('/', function () {
@@ -100,3 +101,8 @@ Route::get('/admin/dashboard', function () {
 })->name('admin.dashboard');
 
 Route::get('/admin/reports', [AdminAuthController::class, 'reports'])->name('admin.reports');
+Route::get('/admin/chatroom', [ChatController::class, 'show'])->name('admin.chatroom');
+
+Route::get('/admin/report', function () {
+    return view('/admin/admin_showreports');
+})->name('admin.reports');
