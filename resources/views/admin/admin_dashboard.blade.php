@@ -7,7 +7,7 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
-    <a href="#" class="dash-btn">Logout</a>
+    <a href="{{route('admin.logout')}}" class="dash-btn">Logout</a>
     <div class="container">
         <h1>Admin Dashboard</h1>
 
@@ -30,12 +30,12 @@
 
         <div class="content-box">
             <h2>Manage Users</h2>
-            <a href="#}" class="btn">Manage Users</a>
+            <a href="{{route('admin.manageUsers')}}" class="btn">Manage Users</a>
         </div>
 
         <div class="content-box">
             <h2>Manage Admins</h2>
-            <a href="#" class="btn">Manage Admins</a>
+            <a href="{{route('admin.manage')}}" class="btn">Manage Admins</a>
         </div>
     </div>
 </body>

@@ -101,8 +101,24 @@ Route::get('/admin/dashboard', function () {
 })->name('admin.dashboard');
 
 Route::get('/admin/reports', [AdminAuthController::class, 'reports'])->name('admin.reports');
-Route::get('/admin/chatroom', [ChatController::class, 'show'])->name('admin.chatroom');
-
 Route::get('/admin/report', function () {
     return view('/admin/admin_showreports');
 })->name('admin.reports');
+
+Route::get('/admin/manageUsers', function () {
+    return view('/admin/admin_manage_users');
+})->name('admin.manageUsers');
+
+Route::post('/admin/ban-customer/{id}', [AdminAuthController::class, 'banCustomer'])->name('admin.banCustomer');
+Route::post('/admin/ban-service-provider/{id}', [AdminAuthController::class, 'banServiceProvider'])->name('admin.banServiceProvider');
+
+
+Route::get('/admin/manage', 'AdminController@index')->name('admin.manage');
+    Route::post('/admin/add', 'AdminController@store')->name('admin.add');
+    Route::delete('/admin/remove/{id}', 'AdminController@destroy')->name('admin.remove');
+
+Route::get('/admin/manage', function() {
+    return view('admin.admin_manage_admins');
+})->name('admin.manage');
+
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');

@@ -11,6 +11,7 @@ use App\Models\BlacklistedServiceProvider;
 use App\Models\Customer; // Add this line to import the Customer class
 use App\Models\BlacklistedCustomer; // Add this line to import the BlacklistedCustomer class
 use App\Models\ServiceProvider; // Add this line to import the ServiceProvider class
+use App\Models\SystemAdministrator;
 
 class AdminAuthController extends Controller
 {
@@ -78,7 +79,51 @@ class AdminAuthController extends Controller
         $customers = Customer::all();
         $serviceProviders = ServiceProvider::all();
 
-        return view('admin.manage_users', compact('customers', 'serviceProviders'));
+        
+        return view('admin.manage_users', [
+            'customers' => $customers,
+            'serviceProviders' => $serviceProviders,
+        ]);
+    }
+    public function index()
+    {
+        $system_administrator = SystemAdministrator::all();
+        return view('admin.manage', compact('admins'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'admin_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:admins,email',
+            'password' => 'required|string|min:8',
+        ]);
+
+        SystemAdministrator::create([
+            'admin_name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('admin.manage')->with('success', 'Admin added successfully.');
+    }
+
+    public function destroy($admin_id)
+    {
+        $system_administrator = SystemAdministrator::findOrFail($admin_id);
+        $system_administrator->delete();
+    
+        return redirect()->route('admin.manage')->with('success', 'Admin deleted successfully.');
+    }
+    public function logout(Request $request)
+    {
+        Auth::guard('system_administrator')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
     
 }

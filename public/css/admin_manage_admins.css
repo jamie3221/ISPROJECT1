@@ -51,25 +51,23 @@ body {
     color: white;
 }
 
-.users {
-    margin-top: 20px;
-}
-
-.user {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.user p {
-    margin-bottom: 5px;
-    font-weight: bold;
+.form-group {
+    margin-bottom: 15px;
 }
 
 form {
     margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 button {
@@ -87,6 +85,41 @@ button:hover {
 }
 
 button:active {
+    background-color: #a080c0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+ul li form {
+    display: inline-block;
+}
+
+ul li form button {
+    background-color: #e52d27;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+ul li form button:hover {
+    background-color: #ff8a00;
+}
+
+ul li form button:active {
     background-color: #a080c0;
 }
 
